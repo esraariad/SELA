@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Sela/widgets/loginbutton.dart';
 import 'package:Sela/widgets/logo.dart';
@@ -10,7 +12,28 @@ class Login extends StatefulWidget {
 class _Login extends State <Login> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Platform.isIOS ? CupertinoPageScaffold(
+      child: Expanded(
+                  child: ListView(
+            children: <Widget>[
+              Logo(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .05,
+              ),
+              InputData('الاسم', false),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .03,
+              ),
+       //        InputData('كلمة السر' , true),
+          //     ForgotPassord(),
+               SizedBox(
+                height: MediaQuery.of(context).size.height * .1,
+              ),
+               LoginButton(),
+            ],
+          ),
+        ),
+    ): Scaffold(
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
