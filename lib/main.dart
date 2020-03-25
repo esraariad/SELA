@@ -5,6 +5,8 @@ import 'package:Sela/pages/login.page.dart';
 import 'package:Sela/pages/resetpassword.page.dart';
 import 'package:flutter/material.dart';
 import 'package:Sela/pages/Welcom.page.dart';
+import 'package:Sela/pages/codeOfResetPassword.page.dart';
+import 'package:Sela/pages/newPassword.page.dart';
 
 
 void main() {
@@ -17,7 +19,11 @@ final routsarray={
     // When navigating to the "/second" route, build the SecondScreen widget.
     //initialRoute: '/',
     '/Login': (context) => Login(),
-    '/ResetPassword' : (context) => ResetPasswordPage()
+    '/ResetPassword' : (context) => ResetPasswordPage(),
+    '/CodeResetPassword' : (context) => CodeResetPasswordPage(),
+     '/NewPassword' : (context) => NewPasswordPage(),
+
+
 };
 
 class MyApp extends StatelessWidget {

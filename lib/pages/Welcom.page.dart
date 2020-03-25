@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:Sela/widgets/loginbutton.dart';
 import 'package:Sela/widgets/logo.dart';
 
 class Welcom extends StatefulWidget{ 
@@ -8,6 +7,33 @@ class Welcom extends StatefulWidget{
 }
 
 class _Welcom extends State<Welcom>{
+ Widget loginButton(){
+   return   Container(
+      alignment: Alignment.bottomCenter,
+      padding: EdgeInsets.only(top: 5, bottom: 5),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5), color: Colors.blue),
+      child: FlatButton(
+        onPressed: () {
+           Navigator.pushNamed(context, '/Login');
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'تسجيل الدخول',
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w200,
+                  fontFamily: 'DroidKufi'),
+            ),
+          ],
+        ),
+      ),
+    );
+ }
   @override
   Widget build(BuildContext context) {
     return
@@ -23,7 +49,7 @@ class _Welcom extends State<Welcom>{
            SizedBox(
              height:  MediaQuery.of(context).size.height*.3,
            ),
-          LoginButton(),
+          loginButton(),
           
          ],
        ),

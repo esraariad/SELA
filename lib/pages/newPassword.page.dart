@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:Sela/widgets/logo.dart';
-import 'package:Sela/widgets/resetPasswordForm.dart';
+import 'package:Sela/widgets/newPAsswordForm.dart';
 
 
 
-class ResetPasswordPage extends StatefulWidget {
-  _ResetPasswordPage createState() => _ResetPasswordPage();
+class NewPasswordPage extends StatefulWidget {
+  _NewPasswordPage createState() => _NewPasswordPage();
 }
 
-class _ResetPasswordPage extends State<ResetPasswordPage> {
+class _NewPasswordPage extends State<NewPasswordPage> {
 
 Widget resetPassword (){
   return  Center(
@@ -46,7 +46,7 @@ Widget resetPassword (){
             SizedBox(
               height: MediaQuery.of(context).size.height * .05,
             ),
-            ResetPasswordForm(),
+            NewPasswordForm(),
             SizedBox(
               height: MediaQuery.of(context).size.height * .03,
             ),
