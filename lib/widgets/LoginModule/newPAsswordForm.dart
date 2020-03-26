@@ -9,21 +9,22 @@ class NewPasswordForm extends StatefulWidget {
 class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
   //final _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String email = '';
-  String emailAnotherTime = '';
-  bool identical =false;
+  final TextEditingController _pass = TextEditingController();
+  final TextEditingController _confirmPass = TextEditingController();
+  String newPass = '';
+  String newPassConfirm = '';
 
- Widget emailFild( String label) {
+  Widget newPassFild(String label) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: TextFormField(
+        controller: _pass,
         validator: validtePasword,
         onSaved: (value) {
+          print('pass' + value);
 
- print('email' + value);
-        
-          email = value;
-  },
+          newPass = value;
+        },
         textDirection: TextDirection.rtl,
         style: TextStyle(
           fontFamily: 'DroidKufi',
@@ -44,7 +45,7 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
             fontWeight: FontWeight.w200,
             color: Colors.black,
           ),
-          hintText: 'أدخل البريد الإلكتروني',
+          hintText: 'أدخل كلمة السر ',
           hintStyle: TextStyle(
             color: Colors.white,
           ),
@@ -64,29 +65,22 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
       ),
     );
   }
-  Widget ensureemailFild( String label) {
+
+  Widget newPassFildConfirm(String label) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: TextFormField(
-        validator: (value){
-          if(identical==false){
+        controller: _confirmPass,
+        validator: (value) {
+          if (value != _pass.text) {
             return 'يجب أن تكون كلمتي السر متطابقتين';
           }
-                    return null;
+          return null;
         },
         onSaved: (value) {
+          print('passconfirm' + value);
 
-   print('email2' + value);
-        
-          emailAnotherTime = value;
-         
-        },
-        onChanged:  (value){
-          if(value==email){
-            identical=true;
-            return 'يجب أن تكون كلمتي السر متطابقتين';
-          }
-              return null;
+          newPassConfirm = value;
         },
         textDirection: TextDirection.rtl,
         style: TextStyle(
@@ -138,10 +132,11 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
       child: FlatButton(
         onPressed: () {
           if (_formKey.currentState.validate()) {
-            if(identical==true){
-            _formKey.currentState.save();
-            print('we are ready to add them to api');
-          }}
+              _formKey.currentState.save();
+              print('we are ready to add them to api');
+             Navigator.pushNamed(context,'/PAsswordChangedSuccessfuly');
+
+          }
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -170,11 +165,11 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            emailFild('كلمة السر الجديدة'),
+            newPassFild('كلمة السر الجديدة'),
             SizedBox(
               height: MediaQuery.of(context).size.height * .03,
             ),
-            emailFild('إعادة ادخال كلمة السر'),
+            newPassFildConfirm('إعادة ادخال كلمة السر'),
             SizedBox(
               height: MediaQuery.of(context).size.height * .03,
             ),

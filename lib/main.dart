@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 
-import 'package:Sela/pages/login.page.dart';
-import 'package:Sela/pages/resetpassword.page.dart';
+import 'package:Sela/pages/LoginModule/login.page.dart';
+import 'package:Sela/pages/LoginModule/resetpassword.page.dart';
 import 'package:flutter/material.dart';
-import 'package:Sela/pages/Welcom.page.dart';
-import 'package:Sela/pages/codeOfResetPassword.page.dart';
-import 'package:Sela/pages/newPassword.page.dart';
-
+import 'package:Sela/pages/LoginModule/Welcom.page.dart';
+import 'package:Sela/pages/LoginModule/codeOfResetPassword.page.dart';
+import 'package:Sela/pages/LoginModule/newPassword.page.dart';
+import 'package:Sela/pages/LoginModule/passwordChangedSuccessfuly.page.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +22,7 @@ final routsarray={
     '/ResetPassword' : (context) => ResetPasswordPage(),
     '/CodeResetPassword' : (context) => CodeResetPasswordPage(),
      '/NewPassword' : (context) => NewPasswordPage(),
+     '/PAsswordChangedSuccessfuly' : (context) => PasswordChangedSuccessfuly(),
 
 
 };

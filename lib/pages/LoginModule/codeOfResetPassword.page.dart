@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:Sela/widgets/logo.dart';
-import 'package:Sela/widgets/codeOfResetPassForm.dart';
+import 'package:Sela/widgets/LoginModule/codeOfResetPassForm.dart';
 
 
 

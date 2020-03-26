@@ -28,14 +28,7 @@ String validtePasword (String value) {
         }
 
 
-        String validateIdenticalPassword (String x, String y){
-          if(x!=y){
-            return 'يجب أن تكون كلمتي السر متطابقتين';
-
-          }
-                    return null;
-
-        }
+      
 
 
 
