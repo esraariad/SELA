@@ -8,18 +8,17 @@ class LoginForm extends StatefulWidget {
 class _LoginForm extends State<LoginForm> with ValidationMixin {
   //final _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-   String name='';
-   String password ='';
+  String name = '';
+  String password = '';
 
   Widget nameFild() {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: TextFormField(
-        validator: validateName ,
-
-        onSaved: (value){
-          print('name'+value);
-          name=value;
+        validator: validateName,
+        onSaved: (value) {
+          print('name' + value);
+          name = value;
         },
         textDirection: TextDirection.rtl,
         style: TextStyle(
@@ -66,10 +65,9 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: TextFormField(
-        validator: validtePasword ,
-
-         onSaved: (value){
-          print('name'+value);
+        validator: validtePasword,
+        onSaved: (value) {
+          print('name' + value);
           password = value;
         },
         textDirection: TextDirection.rtl,
@@ -121,10 +119,12 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
           borderRadius: BorderRadius.circular(5), color: Colors.blue),
       child: FlatButton(
         onPressed: () {
-         if( _formKey.currentState.validate()){
-           _formKey.currentState.save();
-           print('we are ready to add them to api');
-         }
+          if (_formKey.currentState.validate()) {
+            _formKey.currentState.save();
+            print('we are ready to add them to api');
+
+            Navigator.pushNamed(context, '/MainPage');
+          }
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -144,34 +144,25 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
     );
   }
 
-Widget forgotPassord(){
-  return 
-   Center(
-child:  FlatButton(
-          onPressed: (){
+  Widget forgotPassord() {
+    return Center(
+      child: FlatButton(
+        onPressed: () {
           Navigator.pushNamed(context, '/ResetPassword');
-
-          },
-          child: Text(
-            'هل نسيت كلمة السر؟',
-            style: TextStyle(
-              color: Colors.white,
+        },
+        child: Text(
+          'هل نسيت كلمة السر؟',
+          style: TextStyle(
+            color: Colors.white,
             decoration: TextDecoration.underline,
             fontFamily: 'DroidKufi',
-            fontSize:15,
-            ),
-            
-            textAlign: TextAlign.right,
+            fontSize: 15,
           ),
+          textAlign: TextAlign.right,
         ),
-  )
-  
-  
-  
-  ;
-}
-
-
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
