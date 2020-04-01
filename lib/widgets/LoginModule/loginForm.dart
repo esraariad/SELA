@@ -6,57 +6,72 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginForm extends State<LoginForm> with ValidationMixin {
-  //final _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String name = '';
   String password = '';
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _pass = TextEditingController();
 
   Widget nameFild() {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: TextFormField(
+        controller: _name,
         validator: validateName,
         onSaved: (value) {
           print('name' + value);
           name = value;
         },
-        textDirection: TextDirection.rtl,
         style: TextStyle(
           fontFamily: 'DroidKufi',
           color: Colors.black,
-          decorationColor: Colors.white, //Font color change
-          //  backgroundColor: Colors.white, //T
+          decorationColor: Colors.white, 
+          letterSpacing:2,
+
         ),
-        textAlign: TextAlign.right,
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          labelText: 'الإسم',
-          labelStyle: TextStyle(
-            fontFamily: 'DroidKufi',
-            fontSize: 15,
-            fontWeight: FontWeight.w200,
-            color: Colors.black,
-          ),
-          hintText: 'أدخل اسم المستخدم',
-          hintStyle: TextStyle(
-            color: Colors.white,
-          ),
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 12.0),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: const BorderSide(color: Colors.black, width: 1.1),
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.white, width: 1.1),
-          ),
-          prefixIcon: Icon(
-            Icons.person,
-            color: Colors.amber,
-          ),
-        ),
+          
+
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            filled: true,
+            fillColor: Colors.white,
+            labelText: 'الاسم',
+            labelStyle: TextStyle(
+              fontFamily: 'DroidKufi',
+              fontSize: 17,
+              fontWeight: FontWeight.w200,
+              color: Colors.black,
+            ),
+            prefix: Padding(
+              padding: const EdgeInsets.only( left:10.0),
+              child: Text('الاسم',
+           style: TextStyle(
+                
+                fontFamily: 'DroidKufi',
+                fontSize: 10,
+                fontWeight: FontWeight.w200,
+                color: Colors.black,
+              )),
+            ),
+            contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 12.0),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              borderSide: const BorderSide(color: Colors.black, width: 1.1),
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white, width: 1.1),
+            ),
+            prefixIcon: Icon(
+              Icons.person,
+              color: Colors.amber,
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.red,
+              ),
+            )),
       ),
     );
   }
@@ -65,6 +80,7 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: TextFormField(
+        controller: _pass,
         validator: validtePasword,
         onSaved: (value) {
           print('name' + value);
@@ -73,27 +89,25 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
         textDirection: TextDirection.rtl,
         obscureText: true,
         style: TextStyle(
-          fontFamily: 'DroidKufi',
+          fontFamily:'Arial' ,
           color: Colors.black,
-          decorationColor: Colors.white, //Font color change
-          //  backgroundColor: Colors.white, //T
+          decorationColor: Colors.white,
+          fontSize: 25, //Font color change
         ),
         textAlign: TextAlign.right,
         cursorColor: Colors.white,
         decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
           filled: true,
           fillColor: Colors.white,
-          labelText: 'كلمة السر',
+          labelText: 'كلمة السر ',
           labelStyle: TextStyle(
             fontFamily: 'DroidKufi',
-            fontSize: 15,
+            fontSize: 17,
             fontWeight: FontWeight.w200,
             color: Colors.black,
           ),
-          hintText: 'أدخل كلمة السر',
-          hintStyle: TextStyle(
-            color: Colors.white,
-          ),
+          
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 12.0),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
@@ -106,6 +120,21 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
             Icons.lock,
             color: Colors.amber,
           ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.red,
+            ),
+          ),
+          prefix: Padding(
+            padding: const EdgeInsets.only(left:10.0),
+            child: Text( 'كلمة السر',
+            style: TextStyle(
+              fontFamily: 'DroidKufi',
+              fontSize: 10,
+              fontWeight: FontWeight.w200,
+              color: Colors.black,
+            ),),
+          )
         ),
       ),
     );
@@ -171,7 +200,7 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
       child: Form(
         key: _formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             nameFild(),
             SizedBox(

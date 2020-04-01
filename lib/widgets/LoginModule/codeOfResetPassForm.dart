@@ -29,6 +29,7 @@ class _CodeResetPasswordForm extends State<CodeResetPasswordForm>  {
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
           filled: true,
           fillColor: Colors.white,
           labelText: 'كود التأكيد',
@@ -38,6 +39,17 @@ class _CodeResetPasswordForm extends State<CodeResetPasswordForm>  {
             fontWeight: FontWeight.w200,
             color: Colors.black,
           ),
+           prefix: Padding(
+              padding: const EdgeInsets.only( left:10.0),
+              child: Text('كود التأكيد',
+           style: TextStyle(
+                
+                fontFamily: 'DroidKufi',
+                fontSize: 10,
+                fontWeight: FontWeight.w200,
+                color: Colors.black,
+              )),
+            ),
           hintText: 'أدخل الكود الذي تم ارساله عبر الإلكتروني',
           hintStyle: TextStyle(
             color: Colors.white,

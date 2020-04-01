@@ -25,17 +25,21 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
 
           newPass = value;
         },
+        
         textDirection: TextDirection.rtl,
+       obscureText: true,
         style: TextStyle(
-          fontFamily: 'DroidKufi',
+          fontFamily:'Arial' ,
           color: Colors.black,
-          decorationColor: Colors.white, //Font color change
-          //  backgroundColor: Colors.white, //T
+          decorationColor: Colors.white,
+          fontSize: 25, //Font color change
         ),
         textAlign: TextAlign.right,
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+
           filled: true,
           fillColor: Colors.white,
           labelText: label,
@@ -49,6 +53,17 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
           hintStyle: TextStyle(
             color: Colors.white,
           ),
+           prefix: Padding(
+              padding: const EdgeInsets.only( left:10.0),
+              child: Text(label,
+           style: TextStyle(
+                
+                fontFamily: 'DroidKufi',
+                fontSize: 10,
+                fontWeight: FontWeight.w200,
+                color: Colors.black,
+              )),
+            ),
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 12.0),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
@@ -59,6 +74,18 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
           ),
           prefixIcon: Icon(
             Icons.lock,
+            color: Colors.amber,
+          ),
+           errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                          ),
+          ),
+          helperText: 'يجب أن تحتوي كلمة السر على',
+          helperStyle: TextStyle(
+            fontFamily: 'DroidKufi',
+            fontSize: 12,
+            fontWeight: FontWeight.w200,
             color: Colors.amber,
           ),
         ),
@@ -83,16 +110,18 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
           newPassConfirm = value;
         },
         textDirection: TextDirection.rtl,
+        obscureText: true,
         style: TextStyle(
-          fontFamily: 'DroidKufi',
+          fontFamily:'Arial' ,
           color: Colors.black,
-          decorationColor: Colors.white, //Font color change
-          //  backgroundColor: Colors.white, //T
+          decorationColor: Colors.white,
+          fontSize: 25, //Font color change
         ),
         textAlign: TextAlign.right,
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
           filled: true,
           fillColor: Colors.white,
           labelText: label,
@@ -102,6 +131,17 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
             fontWeight: FontWeight.w200,
             color: Colors.black,
           ),
+           prefix: Padding(
+              padding: const EdgeInsets.only( left:10.0),
+              child: Text(label,
+           style: TextStyle(
+                
+                fontFamily: 'DroidKufi',
+                fontSize: 10,
+                fontWeight: FontWeight.w200,
+                color: Colors.black,
+              )),
+            ),
           hintText: 'أدخل البريد الإلكتروني',
           hintStyle: TextStyle(
             color: Colors.white,
@@ -116,6 +156,18 @@ class _NewPasswordForm extends State<NewPasswordForm> with ValidationMixin {
           ),
           prefixIcon: Icon(
             Icons.lock,
+            color: Colors.amber,
+          ),
+           errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                          ),
+          ),
+          helperText: 'يجب أن تكون كلمتي السر متطابقتين',
+          helperStyle: TextStyle(
+            fontFamily: 'DroidKufi',
+            fontSize: 12,
+            fontWeight: FontWeight.w200,
             color: Colors.amber,
           ),
         ),

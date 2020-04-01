@@ -77,7 +77,10 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
 
-
+    - family: ِArial
+      fonts:
+        - asset: lib/assets/fonts/Arial.ttf
+          weight: 700
     - family: DroidKufi
       fonts:
         - asset: lib/assets/fonts/DroidKufi-Regular.ttf

@@ -32,6 +32,8 @@ class _ResetPasswordForm extends State<ResetPasswordForm> with ValidationMixin {
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+
           filled: true,
           fillColor: Colors.white,
           labelText: 'البريد الإلكتروني',
@@ -41,6 +43,17 @@ class _ResetPasswordForm extends State<ResetPasswordForm> with ValidationMixin {
             fontWeight: FontWeight.w200,
             color: Colors.black,
           ),
+           prefix: Padding(
+              padding: const EdgeInsets.only( left:10.0),
+              child: Text('البريد الإلكتروني',
+           style: TextStyle(
+                
+                fontFamily: 'DroidKufi',
+                fontSize: 10,
+                fontWeight: FontWeight.w200,
+                color: Colors.black,
+              )),
+            ),
           hintText: 'أدخل البريد الإلكتروني',
           hintStyle: TextStyle(
             color: Colors.white,
