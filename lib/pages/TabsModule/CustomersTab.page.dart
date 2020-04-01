@@ -18,15 +18,29 @@ class _CustomerTab extends State<CustomerTab>{
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'CUSTOMERS',
-              style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w200,
-                  fontFamily: 'DroidKufi'),
+          children: <Widget>[  
+ Center(
+              child: Container(
+                height: 200,
+                width: 200,
+                child: Card(
+                       color: Colors.purpleAccent,
+                                  child: Center(
+                                    child: Text(
+                    'CUSTOMERS',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w200,
+                        fontFamily: 'DroidKufi'),
+                  ),
+                                  ),
+                ),
+              ),
             ),
+
+
+          
           ],
         ),
       ),
