@@ -30,6 +30,7 @@ dev_dependencies:
     sdk: flutter
   titled_navigation_bar: ^3.6.0
   line_icons: ^0.2.0
+  flutter_circular_chart: ^0.1.0
   google_nav_bar:
 
 # For information on the generic Dart part of this file, see the
@@ -52,6 +53,13 @@ flutter:
     - lib/assets/images/calendar.png
     - lib/assets/images/layers.png
     - lib/assets/images/user.png
+    - lib/assets/images/menuuser.png
+    - lib/assets/images/useraccount.png
+    - lib/assets/images/logout.png
+    - lib/assets/images/sandclock.png
+    - lib/assets/images/location.png
+    - lib/assets/images/call.png
+    - lib/assets/images/teamwork.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

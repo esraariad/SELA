@@ -70,6 +70,11 @@ class _ResetPasswordForm extends State<ResetPasswordForm> with ValidationMixin {
             Icons.email,
             color: Colors.amber,
           ),
+           errorStyle: TextStyle(
+            fontFamily: 'DroidKufi',
+            color:Colors.amber,
+            fontSize:12,
+            ),
         ),
       ),
     );

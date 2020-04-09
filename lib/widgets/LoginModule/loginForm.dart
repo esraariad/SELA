@@ -18,6 +18,7 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
       child: TextFormField(
         controller: _name,
         validator: validateName,
+       
         onSaved: (value) {
           print('name' + value);
           name = value;
@@ -25,15 +26,13 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
         style: TextStyle(
           fontFamily: 'DroidKufi',
           color: Colors.black,
-          decorationColor: Colors.white, 
-          letterSpacing:2,
-
+          decorationColor: Colors.white,
+          letterSpacing: 2,
         ),
+        
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          
-
             floatingLabelBehavior: FloatingLabelBehavior.never,
             filled: true,
             fillColor: Colors.white,
@@ -45,15 +44,14 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
               color: Colors.black,
             ),
             prefix: Padding(
-              padding: const EdgeInsets.only( left:10.0),
+              padding: const EdgeInsets.only(left: 10.0),
               child: Text('الاسم',
-           style: TextStyle(
-                
-                fontFamily: 'DroidKufi',
-                fontSize: 10,
-                fontWeight: FontWeight.w200,
-                color: Colors.black,
-              )),
+                  style: TextStyle(
+                    fontFamily: 'DroidKufi',
+                    fontSize: 10,
+                    fontWeight: FontWeight.w200,
+                    color: Colors.black,
+                  )),
             ),
             contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 12.0),
             border: OutlineInputBorder(
@@ -71,9 +69,14 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
               borderSide: BorderSide(
                 color: Colors.red,
               ),
-            )),
+            ),
+            errorStyle: TextStyle(
+            fontFamily: 'DroidKufi',
+            color:Colors.amber,
+            fontSize:12,
+            ),
       ),
-    );
+    ));
   }
 
   Widget passwordFiled() {
@@ -89,7 +92,7 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
         textDirection: TextDirection.rtl,
         obscureText: true,
         style: TextStyle(
-          fontFamily:'Arial' ,
+          fontFamily: 'Arial',
           color: Colors.black,
           decorationColor: Colors.white,
           fontSize: 25, //Font color change
@@ -97,45 +100,51 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
         textAlign: TextAlign.right,
         cursorColor: Colors.white,
         decoration: InputDecoration(
-          floatingLabelBehavior: FloatingLabelBehavior.never,
-          filled: true,
-          fillColor: Colors.white,
-          labelText: 'كلمة السر ',
-          labelStyle: TextStyle(
-            fontFamily: 'DroidKufi',
-            fontSize: 17,
-            fontWeight: FontWeight.w200,
-            color: Colors.black,
-          ),
-          
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 12.0),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: const BorderSide(color: Colors.black, width: 1.1),
-          ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.white, width: 1.1),
-          ),
-          prefixIcon: Icon(
-            Icons.lock,
-            color: Colors.amber,
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.red,
-            ),
-          ),
-          prefix: Padding(
-            padding: const EdgeInsets.only(left:10.0),
-            child: Text( 'كلمة السر',
-            style: TextStyle(
+            floatingLabelBehavior: FloatingLabelBehavior.never,
+            filled: true,
+            fillColor: Colors.white,
+            labelText: 'كلمة السر ',
+            labelStyle: TextStyle(
               fontFamily: 'DroidKufi',
-              fontSize: 10,
+              fontSize: 17,
               fontWeight: FontWeight.w200,
               color: Colors.black,
-            ),),
+            ),
+            contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 12.0),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5.0),
+              borderSide: const BorderSide(color: Colors.black, width: 1.1),
+            ),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white, width: 1.1),
+            ),
+            prefixIcon: Icon(
+              Icons.lock,
+              color: Colors.amber,
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.red,
+              ),
+            ),
+            prefix: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Text(
+                'كلمة السر',
+                style: TextStyle(
+                  fontFamily: 'DroidKufi',
+                  fontSize: 10,
+                  fontWeight: FontWeight.w200,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          errorStyle: TextStyle(
+            fontFamily: 'DroidKufi',
+            color:Colors.amber,
+            fontSize:12,
           )
-        ),
+            ),
       ),
     );
   }
