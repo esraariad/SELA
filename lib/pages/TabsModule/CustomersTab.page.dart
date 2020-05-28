@@ -1,72 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:Sela/widgets/TabsModule/CustomersTabWidget.dart/CustomersAppBar.dart';
+import 'package:Sela/widgets/TabsModule/CustomersTabWidget.dart/AllCustomers.dart';
+// import 'package:provider/provider.dart';
+// import 'package:Sela/Providers/Customesrs.dart';
 
-
-class CustomerTab extends StatefulWidget{ 
-    _CustomerTab createState() => _CustomerTab();
-
+class CustomerTab extends StatefulWidget {
+  _CustomerTab createState() => _CustomerTab();
 }
 
-class _CustomerTab extends State<CustomerTab>{
- Widget loginButton(){
-   return   Container(
-      alignment: Alignment.bottomCenter,
-      padding: EdgeInsets.only(top: 5, bottom: 5),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: Colors.blue),
-      child: Center(
-       
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[  
- Center(
-              child: Container(
-                height: 200,
-                width: 200,
-                child: Card(
-                       color: Colors.purpleAccent,
-                                  child: Center(
-                                    child: Text(
-                    'CUSTOMERS',
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w200,
-                        fontFamily: 'DroidKufi'),
-                  ),
-                                  ),
-                ),
-              ),
+class _CustomerTab extends State<CustomerTab>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = new TabController(length: 3, vsync: this, initialIndex: 0);
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final deviceheight = MediaQuery.of(context).size.height -
+        Scaffold.of(context).appBarMaxHeight -
+        60;
+
+    return DefaultTabController(
+      length: 4,
+      child: Container(
+        height: deviceheight,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(242, 242, 242, 0.0),
+        ),
+        margin: EdgeInsets.only(top: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomerAppBar(),
+            Expanded(
+              child: TabBarView(children: [
+                CustomerList(),
+                CustomerList(),
+                CustomerList(),
+                CustomerList(),
+              ]),
             ),
-
-
-          
           ],
         ),
       ),
     );
- }
-  @override
-  Widget build(BuildContext context) {
-    return
-     Scaffold(
-      body: Container(
-      decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("lib/assets/images/1.png"), fit: BoxFit.cover)),
-     child: Expanded(
-            child: ListView(
-         children: <Widget>[
-          
-          loginButton(),
-          
-         ],
-       ),
-     ),
-     
-      ),
-    )
-    
-    ;
   }
 }
+
+// child: Container(
+//             width: MediaQuery.of(context).size.width,
+//             height: double.infinity,
+//             margin: EdgeInsets.only(top: 20),
+//             child: SingleChildScrollView(
+//                 child: Column(
+//               //  mainAxisSize: MainAxisSize.min,
+//               // mainAxisAlignment: MainAxisAlignment.center,
+//               // crossAxisAlignment: CrossAxisAlignment.stretch,
+//               children: [
+//                 // Expanded(
+//                 //   flex: 1,
+//                 //  child:
+//                 PreferredSize(
+//                     preferredSize: Size.fromHeight(50),
+//                     child: CustomerAppBar())
+//                 //  )
+//                 ,
+//                 Divider(
+//                   height: 20,
+//                   color: Colors.white,
+//                 ),
+//                 Expanded(
+//                   //  flex:10,
+//                   // flex: 1,
+
+//                   child: SizedBox(
+//                     height: 300,
+//                     child: TabBarView(children: [
+//                       CustomerList(),
+//                       CustomerList(),
+//                       CustomerList(),
+//                       CustomerList(),
+//                     ]),
+//                   ),
+//                 ),
+//               ],
+//             )),
+//           )

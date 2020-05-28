@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class CalendarTab extends StatefulWidget{ 
     _CalendarTab createState() => _CalendarTab();
 
@@ -52,15 +53,7 @@ class _CalendarTab extends State<CalendarTab>{
       decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("lib/assets/images/1.png"), fit: BoxFit.cover)),
-     child: Expanded(
-            child: ListView(
-         children: <Widget>[
-          
-          loginButton(),
-          
-         ],
-       ),
-     ),
+     child: loginButton(),
      
       ),
     )

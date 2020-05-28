@@ -13,11 +13,11 @@ class MAinPAge extends StatefulWidget {
 class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   TabController _tabController;
-  
+  String title = 'الصفحة الرئيسية';
 
   @override
   void initState() {
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: 0);
+    _tabController = new TabController(length: 4, vsync: this, initialIndex: 0,);
 
     super.initState();
   }
@@ -31,17 +31,16 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return
-        //  DefaultTabController(
-        //     length: 5,
-        //     child:
         Scaffold(
+        
+     
       key: _scaffoldKey,
 
       appBar: AppBar(
         centerTitle: true,
         elevation: 3.0,
         title: Text(
-          'الصفحة الرئيسية',
+          title,
           style: TextStyle(
             color: Colors.black,
             fontFamily: 'DroidKufi',
@@ -49,13 +48,10 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
             fontSize: 15,
           ),
         ),
-        leading:  IconButton(
-              icon: Icon(Icons.notifications),
-              color: Colors.black,
-              onPressed: () {
-
-              }
-              ),
+        leading: IconButton(
+            icon: Icon(Icons.notifications),
+            color: Colors.black,
+            onPressed: () {}),
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
@@ -68,24 +64,21 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
               icon: ImageIcon(AssetImage('lib/assets/images/menu.png')),
               color: Colors.black,
               onPressed: () {
-                if(_scaffoldKey.currentState.isEndDrawerOpen){
+                if (_scaffoldKey.currentState.isEndDrawerOpen) {
                   Navigator.pop(context);
-                }
-                else
-                _scaffoldKey.currentState.openEndDrawer();
+                } else
+                  _scaffoldKey.currentState.openEndDrawer();
               }),
         ],
       ),
 //////////////////////////////////////////////////////////////////////////////////////////////
       endDrawer: Container(
-        width: MediaQuery.of(context).size.width*.8,
-       //height: MediaQuery.of(context).size.height-60,
-      //  alignment: Alignment.topRight,
-     // margin: EdgeInsets.only(bottom:75),
+        width: MediaQuery.of(context).size.width * .8,
+        //height: MediaQuery.of(context).size.height-60,
+        //  alignment: Alignment.topRight,
+        // margin: EdgeInsets.only(bottom:75),
 
         child: Drawer(
-          
-          
           elevation: 2,
           child: Directionality(
             textDirection: TextDirection.rtl,
@@ -94,25 +87,30 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                 Container(
                   width: double.infinity,
                   padding:
-                      EdgeInsets.only(top: 40, bottom: 30, right: 20, left: 20),
+                      EdgeInsets.all(20),
                   color: Colors.black87,
                   child: Row(
                     children: <Widget>[
                       Container(
-                          height: 60,
-                          width: 60,
-                          // margin: EdgeInsets.only(top:20),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image:
-                                  AssetImage('lib/assets/images/menuuser.png'),
-                              fit: BoxFit.fill,
-                            ),
-                          )),
+                         width:((MediaQuery.of(context).size.width * .8)*.2)-20,
+                         alignment: Alignment.centerRight,
+                        child: CircleAvatar(
+                          child:Image.asset('lib/assets/images/menuuser.png') ,
+                          radius: 25,
+                          backgroundColor:Colors.black87 ,
+                          foregroundColor: Colors.white,
+                          
+
+                        ),
+                      ),
+                   
                       Container(
-                          width: 100,
+                        margin: EdgeInsets.only(top:5),
+                        alignment: Alignment.lerp(Alignment.centerRight, Alignment.centerLeft, .2),
+
+                          width:((MediaQuery.of(context).size.width * .8)*.6)-20,
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               Text(' أحمد أحمد',
                                   style: TextStyle(
@@ -130,9 +128,9 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                                   ))
                             ],
                           )),
-                       
                       Container(
-                        width: MediaQuery.of(context).size.width*.3,
+                        
+                        width: ((MediaQuery.of(context).size.width * .8)*.2)-20,
                         alignment: Alignment.centerLeft,
                         child: IconButton(
                             icon: Icon(
@@ -140,7 +138,8 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                               color: Colors.white,
                             ),
                             onPressed: () {
-                              _tabController.animateTo((_tabController.index + 1));
+                              _tabController
+                                  .animateTo((_tabController.index + 1));
                               Navigator.pop(context);
                             }),
                       )
@@ -153,7 +152,6 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                     child: ListView(
                       children: <Widget>[
                         ListTile(
-
                           leading: ImageIcon(
                             AssetImage('lib/assets/images/home.png'),
                             color: Colors.black,
@@ -168,8 +166,7 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                             Navigator.pop(context);
                           },
                         ),
-                         ListTile(
-
+                        ListTile(
                           leading: ImageIcon(
                             AssetImage('lib/assets/images/useraccount.png'),
                             color: Colors.black,
@@ -181,12 +178,11 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                                   fontWeight: FontWeight.bold)),
                           onTap: () {
                             //Navigator.pushNamed(context, '/MainPage');
-                             _tabController.animateTo((1));
+                            _tabController.animateTo((1));
                             Navigator.pop(context);
                           },
                         ),
-                         ListTile(
-
+                        ListTile(
                           leading: ImageIcon(
                             AssetImage('lib/assets/images/user.png'),
                             color: Colors.black,
@@ -197,14 +193,11 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold)),
                           onTap: () {
-                            _tabController
-                                .animateTo((3));
+                            _tabController.animateTo((3));
                             Navigator.pop(context);
                           },
-                        )
-                        ,
-                         ListTile(
-
+                        ),
+                        ListTile(
                           leading: ImageIcon(
                             AssetImage('lib/assets/images/layers.png'),
                             color: Colors.black,
@@ -215,13 +208,11 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold)),
                           onTap: () {
-                            _tabController
-                                .animateTo((2));
+                            _tabController.animateTo((2));
                             Navigator.pop(context);
                           },
                         ),
-                         ListTile(
-
+                        ListTile(
                           leading: ImageIcon(
                             AssetImage('lib/assets/images/calendar.png'),
                             color: Colors.black,
@@ -232,12 +223,11 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold)),
                           onTap: () {
-                            _tabController
-                                .animateTo((1));
+                            _tabController.animateTo((1));
                             Navigator.pop(context);
                           },
-                        ), ListTile(
-
+                        ),
+                        ListTile(
                           leading: ImageIcon(
                             AssetImage('lib/assets/images/logout.png'),
                             color: Colors.black,
@@ -248,8 +238,7 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold)),
                           onTap: () {
-                            _tabController
-                                .animateTo((1));
+                            _tabController.animateTo((1));
                             Navigator.pop(context);
                           },
                         )
@@ -264,34 +253,49 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
       ),
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      body: TabBarView(
-        controller: _tabController,
-        children: <Widget>[
-        //  HomeTab(),
-          HomeTab(),
-          CalendarTab(),
-          ProjectsTab(),
-          CustomerTab(),
-        ],
+      body:  Directionality(
+        textDirection: TextDirection.rtl,
+              child: TabBarView(
+          
+          controller: _tabController,
+          children: <Widget>[
+            
+            HomeTab(),
+            CalendarTab(),
+            ProjectsTab(),
+            CustomerTab(),
+          ],
+        ),
       ),
+      
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       bottomNavigationBar: Directionality(
-        
-
         textDirection: TextDirection.rtl,
+
         child: Container(
           decoration: BoxDecoration(color: Colors.black87),
-          height:60,
+          height: 60,
           child: ListView(children: <Widget>[
             TabBar(
-              
+
               controller: _tabController,
               onTap: (index) {
                 // print(index);
-                // if (index == 0) {
-                //   _scaffoldKey.currentState.openEndDrawer();
-                // }
+                setState(() {
+                   if (index == 0) {
+                  
+                  title = 'الصفحة الرئيسية';
+                } else if (index == 1) {
+                  title = 'التقويم';
+                } else if (index == 2) {
+                  title = 'المشروعات';
+                } else if (index == 3) {
+                  title = 'العملاء';
+                }
+                  
+                });
+               
               },
               indicator: UnderlineTabIndicator(
                 borderSide: BorderSide(
@@ -304,8 +308,7 @@ class _MAinPage extends State<MAinPAge> with SingleTickerProviderStateMixin {
               indicatorColor: Colors.amber,
               unselectedLabelColor: Colors.white,
               tabs: <Widget>[
-              
-                Tab(
+                Tab(                 
                   icon: ImageIcon(
                     AssetImage('lib/assets/images/home.png'),
                   ),

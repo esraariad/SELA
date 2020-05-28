@@ -35,8 +35,8 @@ Widget resetPassword (){
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage("lib/assets/images/1.png"), fit: BoxFit.cover)),
-      child: Expanded(
-        child: ListView(
+      child: SingleChildScrollView(
+        child: Column(
           children: <Widget>[
             Logo(),
             SizedBox(

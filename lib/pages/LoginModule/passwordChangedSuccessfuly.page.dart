@@ -76,27 +76,25 @@ Widget successfuly(){
       decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("lib/assets/images/1.png"), fit: BoxFit.cover)),
-     child: Expanded(
-            child: ListView(
+     child: Column(
          children: <Widget>[
            Logo(),
            SizedBox(
-             height:  MediaQuery.of(context).size.height*.04,
+      height:  MediaQuery.of(context).size.height*.04,
            ),
            passwordChanged(),
-             SizedBox(
-             height:  MediaQuery.of(context).size.height*.04,
+      SizedBox(
+      height:  MediaQuery.of(context).size.height*.04,
            ),
            successfuly(),
-             SizedBox(
-             height:  MediaQuery.of(context).size.height*.04,
+      SizedBox(
+      height:  MediaQuery.of(context).size.height*.04,
            ),
           loginButton(),
 
           
          ],
        ),
-     ),
      
       ),
     )

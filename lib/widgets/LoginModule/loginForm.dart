@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:Sela/mixins/validation_mixin.dart';
+import 'package:provider/provider.dart';
+import '../../Providers/auth.dart';
+import '../../Models/http_exption.dart';
 
 class LoginForm extends StatefulWidget {
   _LoginForm createState() => _LoginForm();
@@ -11,28 +14,82 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
   String password = '';
   final TextEditingController _name = TextEditingController();
   final TextEditingController _pass = TextEditingController();
+  bool isLoading = false;
+
+  void showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('An Error Occurred!'),
+        content: Text(message),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Okay'),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+              setState(() {
+      isLoading = false;
+    });
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  Future<void> submit(ctx) async {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      setState(() {
+        isLoading = true;
+      });
+      try {
+        await Provider.of<AuthProvider>(ctx,listen: false).login(_name.text, _pass.text);
+      } on HttpException catch (error) {
+        var errorMessage = error;
+         setState(() {
+      isLoading = false;
+    });
+
+        showErrorDialog(errorMessage.toString());
+      } catch (error) {
+        const errorMessage =
+            'Could not authenticate you. Please try again later.';
+        showErrorDialog(errorMessage);
+         setState(() {
+      isLoading = false;
+    });
+      } finally {
+        if (Provider.of<AuthProvider>(ctx,listen: false).success) {
+          Navigator.pushReplacementNamed(ctx, '/MainPage');
+        }
+      }
+    }
+
+    setState(() {
+      isLoading = false;
+    });
+  }
 
   Widget nameFild() {
     return Directionality(
-      textDirection: TextDirection.rtl,
-      child: TextFormField(
-        controller: _name,
-        validator: validateName,
-       
-        onSaved: (value) {
-          print('name' + value);
-          name = value;
-        },
-        style: TextStyle(
-          fontFamily: 'DroidKufi',
-          color: Colors.black,
-          decorationColor: Colors.white,
-          letterSpacing: 2,
-        ),
-        
-        cursorColor: Colors.white,
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
+        textDirection: TextDirection.rtl,
+        child: TextFormField(
+          controller: _name,
+          validator: validateName,
+          onSaved: (value) {
+            print('name' + value);
+            name = value;
+          },
+          style: TextStyle(
+            fontFamily: 'DroidKufi',
+            color: Colors.black,
+            decorationColor: Colors.white,
+            letterSpacing: 2,
+          ),
+          cursorColor: Colors.white,
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
             floatingLabelBehavior: FloatingLabelBehavior.never,
             filled: true,
             fillColor: Colors.white,
@@ -71,12 +128,12 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
               ),
             ),
             errorStyle: TextStyle(
-            fontFamily: 'DroidKufi',
-            color:Colors.amber,
-            fontSize:12,
+              fontFamily: 'DroidKufi',
+              color: Colors.amber,
+              fontSize: 12,
             ),
-      ),
-    ));
+          ),
+        ));
   }
 
   Widget passwordFiled() {
@@ -139,17 +196,16 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
                 ),
               ),
             ),
-          errorStyle: TextStyle(
-            fontFamily: 'DroidKufi',
-            color:Colors.amber,
-            fontSize:12,
-          )
-            ),
+            errorStyle: TextStyle(
+              fontFamily: 'DroidKufi',
+              color: Colors.amber,
+              fontSize: 12,
+            )),
       ),
     );
   }
 
-  Widget submitButton() {
+  Widget submitButton(BuildContext ctx) {
     return Container(
       alignment: Alignment.bottomCenter,
       padding: EdgeInsets.only(top: 5, bottom: 5),
@@ -157,12 +213,7 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
           borderRadius: BorderRadius.circular(5), color: Colors.blue),
       child: FlatButton(
         onPressed: () {
-          if (_formKey.currentState.validate()) {
-            _formKey.currentState.save();
-            print('we are ready to add them to api');
-
-            Navigator.pushNamed(context, '/MainPage');
-          }
+          submit(ctx);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -218,9 +269,15 @@ class _LoginForm extends State<LoginForm> with ValidationMixin {
             passwordFiled(),
             forgotPassord(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * .1,
+              height: MediaQuery.of(context).size.height * .05,
             ),
-            submitButton(),
+            if(isLoading) 
+            Center(child: CircularProgressIndicator()),
+             SizedBox(
+              height: MediaQuery.of(context).size.height * .05,
+            ),
+            
+            submitButton(context),
           ],
         ),
       ),

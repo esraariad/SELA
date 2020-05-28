@@ -42,17 +42,21 @@ class _Welcom extends State<Welcom>{
       decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("lib/assets/images/1.png"), fit: BoxFit.cover)),
-     child: Expanded(
-            child: ListView(
-         children: <Widget>[
-           Logo(),
-           SizedBox(
-             height:  MediaQuery.of(context).size.height*.3,
+     child: Column(
+       children: <Widget>[
+         Expanded(
+                child: ListView(
+             children: <Widget>[
+               Logo(),
+               SizedBox(
+                 height:  MediaQuery.of(context).size.height*.3,
+               ),
+              loginButton(),
+
+             ],
            ),
-          loginButton(),
-          
-         ],
-       ),
+         ),
+       ],
      ),
      
       ),

@@ -53,15 +53,7 @@ class _ProjectsTab extends State<ProjectsTab>{
       decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("lib/assets/images/1.png"), fit: BoxFit.cover)),
-     child: Expanded(
-            child: ListView(
-         children: <Widget>[
-          
-          loginButton(),
-          
-         ],
-       ),
-     ),
+     child: loginButton(),
      
       ),
     )

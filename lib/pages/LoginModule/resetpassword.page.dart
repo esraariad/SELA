@@ -4,11 +4,7 @@ import 'package:Sela/widgets/LoginModule/resetPasswordForm.dart';
 
 
 
-class ResetPasswordPage extends StatefulWidget {
-  _ResetPasswordPage createState() => _ResetPasswordPage();
-}
-
-class _ResetPasswordPage extends State<ResetPasswordPage> {
+class ResetPasswordPage extends StatelessWidget {
 
 Widget resetPassword (){
   return  Center(
@@ -35,8 +31,8 @@ Widget resetPassword (){
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage("lib/assets/images/1.png"), fit: BoxFit.cover)),
-      child: Expanded(
-        child: ListView(
+      child: SingleChildScrollView(
+        child: Column(
           children: <Widget>[
             Logo(),
             SizedBox(

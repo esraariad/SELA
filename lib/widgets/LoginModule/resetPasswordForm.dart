@@ -27,7 +27,9 @@ class _ResetPasswordForm extends State<ResetPasswordForm> with ValidationMixin {
           color: Colors.black,
           decorationColor: Colors.white, //Font color change
           //  backgroundColor: Colors.white, //T
+
         ),
+        
         textAlign: TextAlign.right,
         cursorColor: Colors.white,
         keyboardType: TextInputType.emailAddress,

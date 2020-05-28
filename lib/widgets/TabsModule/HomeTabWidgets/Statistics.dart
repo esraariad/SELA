@@ -8,24 +8,26 @@ class _Statistics extends State<Statistics> {
   @override
   Widget build(BuildContext context) {
     final devicewidth = MediaQuery.of(context).size.width;
-    final itemWidth = devicewidth / 2 ;
-    final itemHeight = 150;
+    final itemWidth = (devicewidth / 2) - 20;
+    
+    final itemHeight = 135;
     return Container(
-      margin: EdgeInsets.only(right: 10, left: 10),
       child: GridView.count(
-        childAspectRatio: (itemWidth / itemHeight),
+        childAspectRatio: (itemWidth / itemHeight)*1.05,
         shrinkWrap: true,
-        crossAxisCount: devicewidth > 500 ? 4 : 2,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 12.0,
+        crossAxisCount: 2,
+        padding: EdgeInsets.zero,
+        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 10.0,
         children: <Widget>[
+
           Container(
               color: Colors.white,
               child: Column(
                 children: <Widget>[
                   Container(
                     color: Colors.white,
-                    margin: EdgeInsets.only(left: 50),
+                    alignment: Alignment.topRight,
                     child: Text('المكالمات خلال الشهر',
                         textAlign: TextAlign.right,
                         style: TextStyle(
@@ -62,7 +64,7 @@ class _Statistics extends State<Statistics> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(left: 50),
+                    alignment: Alignment.topRight,
                     color: Colors.white,
                     child: Text('زيارات خلال الشهر',
                         textAlign: TextAlign.right,
@@ -101,7 +103,7 @@ class _Statistics extends State<Statistics> {
                 children: <Widget>[
                   Container(
                     color: Colors.white,
-                    margin: EdgeInsets.only(left: 50),
+                    alignment: Alignment.topRight,
                     child: Text('معاينات خلال الشهر',
                         textAlign: TextAlign.right,
                         style: TextStyle(
@@ -139,7 +141,7 @@ class _Statistics extends State<Statistics> {
                 children: <Widget>[
                   Container(
                     color: Colors.white,
-                    margin: EdgeInsets.only(left: 50),
+                    alignment: Alignment.topRight,
                     child: Text('الحجوزات',
                         textAlign: TextAlign.right,
                         style: TextStyle(
