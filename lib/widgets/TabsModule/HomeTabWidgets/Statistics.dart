@@ -29,13 +29,14 @@ class _Statistics extends State<Statistics> {
                     color: Colors.white,
                     alignment: Alignment.topRight,
                     child: Text('المكالمات خلال الشهر',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'DroidKufi',
-                          fontSize: 10,
-                          color: Colors.black,
-                        )),
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'DroidKufi',
+                            fontSize: 10,
+                            color: Colors.black,
+                            height: 1.2
+                          )),
                   ),
                   Container(
                     color: Colors.white,
@@ -48,14 +49,16 @@ class _Statistics extends State<Statistics> {
                   Container(
                     color: Colors.white,
                     margin: EdgeInsets.only(top: 10),
-                    child: Text('78',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'DroidKufi',
-                          fontSize: 15,
-                          color: Colors.black,
-                        )),
+                    child: ClipRect (
+                                          child: Text('78',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'DroidKufi',
+                            fontSize: 15,
+                            color: Colors.black,
+                          )),
+                    ),
                   ),
                 ],
               )),

@@ -24,9 +24,9 @@ class _SingleCustomerBodyState extends State<SingleCustomerBody>
       length: 3,
       child: Column(
         children: [
-          Expanded(flex: 1, child: Actionss(mail: widget.customer.info.contactInfo.email,)),
+          Expanded(flex: 2, child: Actionss(mail: widget.customer.info.contactInfo.email,)),
           Expanded(
-            flex: 4,
+            flex: 5,
             child: Container(
                 child: Column(children: [
               CustomTabBar(),

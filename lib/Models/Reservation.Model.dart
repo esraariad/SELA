@@ -592,13 +592,25 @@ class ProjectGallery {
   ProjectGallery({this.cover, this.images});
 
   factory ProjectGallery.fromJson(Map<String, dynamic> parsedJson) {
-    var hasFromJson = parsedJson['images'];
-    List<String> imges = hasFromJson.cast<String>();
-
-    return ProjectGallery(
+     var hasFromJson = parsedJson['images'];
+    if(hasFromJson!=null){
+      List<String> imges = hasFromJson.cast<String>();
+ return ProjectGallery(
       cover:
           parsedJson['cover'] == null ? 'null' : parsedJson['cover'] as String,
       images: imges,
     );
   }
+    
+    else {
+       return ProjectGallery(
+      cover:
+          parsedJson['cover'] == null ? 'null' : parsedJson['cover'] as String,
+    );
+  }
+    }
+   
+    
+
+   
 }
